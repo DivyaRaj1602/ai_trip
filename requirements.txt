@@ -14,7 +14,7 @@ langsmith
 python-dotenv
 langchain-groq
 langchain-tavily
-
+langchain-google-community[places]
 
 
 -e .
