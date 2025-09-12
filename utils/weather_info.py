@@ -7,6 +7,8 @@ class WeatherForecastTool:
 
     def get_current_weather(self, place:str):
         """Get current weather of a place"""
+        if not self.api_key or self.api_key.startswith('your_'):
+            return {"error": "Weather API key not configured"}
         try:
             url = f"{self.base_url}/weather"
             params = {
@@ -16,10 +18,12 @@ class WeatherForecastTool:
             response = requests.get(url, params=params)
             return response.json() if response.status_code == 200 else {}
         except Exception as e:
-            raise e
+            return {"error": f"Weather API error: {str(e)}"}
     
     def get_forecast_weather(self, place:str):
         """Get weather forecast of a place"""
+        if not self.api_key or self.api_key.startswith('your_'):
+            return {"error": "Weather API key not configured"}
         try:
             url = f"{self.base_url}/forecast"
             params = {
@@ -31,4 +35,4 @@ class WeatherForecastTool:
             response = requests.get(url, params=params)
             return response.json() if response.status_code == 200 else {}
         except Exception as e:
-            raise e
+            return {"error": f"Weather API error: {str(e)}"}

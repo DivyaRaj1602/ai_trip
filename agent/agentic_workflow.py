@@ -6,7 +6,7 @@ from tools.weather_info_tool import WeatherInfoTool
 from tools.place_search_tool import PlaceSearchTool
 from tools.expense_calculator_tool import CalculatorTool
 from tools.currency_conversion_tool import CurrencyConverterTool
-from tools.arithmetic_operation_tool import multiply, add, currency_converter
+from tools.arithmetic_operation_tool import multiply, add
 
 
 
@@ -26,7 +26,7 @@ class GraphBuilder():
                            * self.place_search_tools.place_search_tool_list,
                            * self.calculator_tools.calculator_tool_list,
                            * self.currency_converter_tools.currency_converter_tool_list,
-                           multiply, add, currency_converter])
+                           multiply, add])
         
         self.llm_with_tools = self.llm.bind_tools(tools=self.tools)
         
